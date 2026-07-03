@@ -1,0 +1,71 @@
+/*
+box-shadow explanation:
+
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+0      -> Horizontal offset (shadow does not move left/right)
+4px    -> Vertical offset (shadow moves slightly downward)
+12px   -> Blur radius (makes shadow soft)
+rgba(0,0,0,0.15)
+        -> Black shadow with 15% opacity
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  width: 320px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+}
+
+.card-header {
+  padding: 20px 20px 10px;
+}
+
+.card-header h2 {
+  margin: 0 0 8px;
+}
+
+.job-title {
+  margin: 0;
+  color: #777777;
+  font-size: 0.9rem;
+}
+
+.bio {
+  margin: 0;
+  padding: 0 20px 20px;
+  line-height: 1.5;
+}
+
+.contact-btn {
+  display: inline-block;
+  margin: 0 20px 20px;
+  padding: 10px 18px;
+  background-color: #0066cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.contact-btn:hover {
+  background-color: #0052a3;
+}

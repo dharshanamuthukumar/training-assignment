@@ -1,0 +1,35 @@
+/*
+Task 4.3 - Margin Collapse
+
+Answers:
+
+1. The actual gap between the two paragraphs is 40px,
+   not 60px.
+
+2. This happens because vertical margins between adjacent
+   block elements collapse. The browser uses only the larger
+   of the two margins instead of adding them together.
+
+3. Margin collapse does NOT happen:
+   - For horizontal (left/right) margins.
+   - Inside Flexbox layouts.
+   - Inside CSS Grid layouts.
+   - When elements are absolutely or fixed positioned.
+   - When padding, border, or content separates the margins.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.first {
+  background-color: #ffe0e0;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.second {
+  background-color: #e0e0ff;
+  padding: 10px;
+  margin-top: 20px;
+}

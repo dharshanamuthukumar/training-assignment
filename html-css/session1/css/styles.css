@@ -1,0 +1,92 @@
+/* 
+Why is the stylesheet linked in <head> and not at the bottom of <body>?
+
+The stylesheet is linked in the <head> so the browser loads the CSS
+before rendering the page. This prevents the page from appearing
+unstyled before the CSS is applied.
+*/
+
+/*
+Observation:
+When both a tag selector and a class selector target the same element
+with conflicting styles, the class selector wins because it has higher
+specificity than the tag selector.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Task A — Tag Selector */
+h2 {
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+}
+
+/* Task B — Class Selector */
+.highlight {
+  background-color: #fff3cd;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Task C — ID Selector */
+#contact-section {
+  background-color: #e8f4ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+/* Task 2.3 - CSS Cascade */
+
+/*
+Answers:
+1. The paragraph is green because the ID selector (#about-paragraph)
+   has higher specificity than the class selector (.intro-text)
+   and the tag selector (p).
+
+2. To make the p tag rule win, you would need to remove the class and
+   ID from the paragraph, or use !important (not recommended).
+
+3. Specificity order (lowest to highest):
+   Element selector < Class selector < ID selector < Inline styles < !important
+*/
+
+p {
+  color: black;
+}
+
+.intro-text {
+  color: blue;
+}
+
+#about-paragraph {
+  color: green;
+}
+/* Navigation Styles */
+
+nav {
+  margin-top: 15px;
+}
+
+nav a {
+  margin-right: 20px;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+/*
+Explore:
+href="#about" is called a fragment identifier.
+When clicked, the browser looks for an element with id="about"
+and automatically scrolls to that section of the page.
+*/

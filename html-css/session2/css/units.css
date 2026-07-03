@@ -1,0 +1,85 @@
+/*
+Task 1.1
+
+Answer:
+Use px when you need a fixed size that should not change,
+such as borders, icons, or precise layouts.
+
+Use rem when you want elements to scale with the user's
+font size for better accessibility.
+
+Use % when an element should size itself relative to its
+parent container, making layouts more responsive.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.box-px,
+.box-percent,
+.box-rem,
+.box-vw {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #333;
+}
+
+.box-px {
+  width: 300px;
+  background-color: #f0f4ff;
+}
+
+.box-percent {
+  width: 50%;
+  background-color: #fff0f4;
+}
+
+.box-rem {
+  width: 20rem;
+  background-color: #f0fff4;
+}
+
+.box-vw {
+  width: 60vw;
+  background-color: #fffbf0;
+}
+/*
+Task 1.2
+
+Difference between rem and em:
+
+rem is relative to the root (html) font size.
+Every rem value is calculated using the html font size.
+
+em is relative to the font size of its parent element.
+If the parent's font size changes, the em value changes too.
+*/
+
+html {
+  font-size: 16px;
+}
+
+.font-demo {
+  font-size: 12px;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 2px solid #333;
+}
+
+.px-text {
+  font-size: 16px;
+}
+
+.rem-text {
+  font-size: 1rem;
+}
+
+.em-text {
+  font-size: 1.5em;
+}

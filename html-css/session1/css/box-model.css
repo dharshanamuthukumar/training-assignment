@@ -1,0 +1,104 @@
+/*
+Answers:
+
+1. Total rendered width of the box:
+   300px
+
+   Because box-sizing: border-box is used, the width (300px)
+   already includes the content, padding, and border.
+   Only the left and right margins are outside the width.
+
+2. What changes if box-sizing: border-box is removed?
+
+   The width property applies only to the content area.
+   The padding and border are added outside the content width,
+   making the total rendered width:
+
+   300px (content)
+ + 20px + 20px (padding)
+ + 4px + 4px (border)
+ = 348px
+*/
+/*
+Task 4.2
+
+Difference:
+The content-box element is wider because the width property
+applies only to the content. Padding and border are added
+outside the specified width.
+
+The border-box element keeps the total width at 300px because
+the padding and border are included within the specified width.
+*/
+/*
+The content-box model makes the element wider because
+padding and border are added outside the specified width.
+
+The border-box model includes padding and border inside
+the specified width, making layout sizing easier and more predictable.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.content-box {
+  box-sizing: content-box;
+  width: 300px;
+  padding: 20px;
+  border: 4px solid red;
+  margin: 20px auto;
+  background-color: #ffe0e0;
+}
+
+.border-box {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 4px solid green;
+  margin: 20px auto;
+  background-color: #e0ffe0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  width: 300px;
+  height: 150px;
+  padding: 20px;
+  border: 4px solid #333;
+  margin: 40px auto;
+  background-color: lightblue;
+}
+/*
+Task 4.4 - Padding vs Margin
+
+Answers:
+
+1. Padding adds space inside the element, between the content
+   and the border. The background color extends into the padding
+   area, making the colored box appear larger.
+
+2. Margin adds space outside the element. The background color
+   does not extend into the margin, so the space around the
+   element remains transparent.
+
+3. Use padding when you want more space inside an element,
+   such as around text or images.
+
+4. Use margin when you want to create space between separate
+   elements on the page.
+*/
+
+.padding-demo {
+  background-color: lightcoral;
+  padding: 30px;
+  margin: 8px 0;
+}
+
+.margin-demo {
+  background-color: lightcoral;
+  padding: 4px;
+  margin: 30px 0;
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!--
+    The viewport meta tag tells the browser to use the device's actual
+    screen width and display the page at a 1:1 scale. This is essential
+    for responsive design because it allows layouts to adapt correctly
+    to different screen sizes, especially on mobile devices.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Responsive</title>
+
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <p>
+      Open DevTools and toggle the device toolbar (Ctrl+Shift+M / Cmd+Shift+M)
+      to simulate mobile.
+    </p>
+    <nav class="resp-nav">
+      <div class="resp-logo">Logo</div>
+
+      <ul class="resp-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="responsive-box">
+      <h2>Resize the window</h2>
+      <p>This box changes style at different screen sizes.</p>
+    </div>
+    <section class="image-section">
+      <img src="https://picsum.photos/800/400" alt="Sample landscape" />
+    </section>
+  </body>
+</html>
