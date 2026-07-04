@@ -1,0 +1,7 @@
+{
+  "users": [
+    { "id": 1, "name": "Rahul", "role": "intern" },
+    { "id": 2, "name": "Priya", "role": "intern" },
+    { "id": 3, "name": "Amit", "role": "intern" }
+  ]
+}

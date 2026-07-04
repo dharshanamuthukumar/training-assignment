@@ -1,0 +1,21 @@
+{
+  "name": "session1",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "compare.js",
+  "scripts": {
+    "start": "node dates.js",
+    "hello": "node hello.js",
+    "info": "node system-info.js",
+    "dev": "nodemon dates.js"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.21"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
