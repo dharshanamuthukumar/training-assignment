@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Task Tracker</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Add a Task</h2>
+
+        <form id="task-form">
+          <div>
+            <label for="task-name">Task Name:</label>
+            <input
+              type="text"
+              id="task-name"
+              name="task-name"
+              placeholder="Enter task"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority" required>
+              <option value="">Select Priority</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="due-date">Due Date:</label>
+            <input type="date" id="due-date" name="due-date" required />
+          </div>
+
+          <button type="submit">Add Task</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Task List</h2>
+        <div>
+          <button id="all-btn">All</button>
+          <button id="pending-btn">Pending</button>
+          <button id="done-btn">Done</button>
+
+          <select id="sort">
+            <option value="">Sort Tasks</option>
+            <option value="priority">By Priority</option>
+            <option value="date">By Due Date</option>
+          </select>
+
+          <p id="counter">Showing 0 of 0 tasks</p>
+        </div>
+        <ul id="task-list"></ul>
+
+        <button id="clear-all" type="button">Clear All</button>
+      </section>
+
+      <section>
+        <h2>Task Summary</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Number of Tasks</th>
+            </tr>
+          </thead>
+
+          <tbody id="task-table-body">
+            <!-- Tasks will be added here -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Task Tracker. All Rights Reserved.</p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

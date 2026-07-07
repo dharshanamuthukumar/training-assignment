@@ -1,0 +1,37 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const adminUser = {
+    id: 1,
+    name: "Alice",
+    email: "alice@example.com",
+    age: 30,
+    role: "admin",
+};
+const editorUser = {
+    id: 2,
+    name: "Bob",
+    email: "bob@example.com",
+    role: "editor",
+};
+const viewerUser = {
+    id: 3,
+    name: "Charlie",
+    email: "charlie@example.com",
+    age: 25,
+    role: "viewer",
+};
+const invalidUser = {
+    id: 4,
+    name: "David",
+    email: "david@example.com",
+    role: "viewer",
+};
+//  Task 3 - Intentional error
+// adminUser.id = 10;
+/*
+readonly prevents important properties like 'id' from being modified
+after the object is created. This helps maintain data integrity and
+allows TypeScript to catch accidental changes during development
+instead of relying only on developers to remember not to modify them.
+*/
+//# sourceMappingURL=user.js.map
