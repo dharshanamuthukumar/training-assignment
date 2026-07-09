@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -181,4 +181,25 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 20px;
+  border-radius: 8px;
+}
+
+.card-title {
+  color: darkblue;
+  margin-bottom: 10px;
+}
+.intern-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.intern-card h3 {
+  margin: 0 0 8px;
 }
