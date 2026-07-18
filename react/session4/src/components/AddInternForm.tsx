@@ -1,57 +1,77 @@
-import useInternForm from "../hooks/useInternForm";
-import { useInterns } from "../contexts/intern-context";
+import { useState } from "react";
 
-function AddInternForm() {
-  const { form, error, handleChange, handleReset, isValid } = useInternForm();
-  const { addIntern, interns } = useInterns();
+interface AddInternFormProps {
+  onAdd: (intern: { name: string; score: number }) => void;
+  count: number;
+}
 
-  function handleSubmit(): void {
-    if (!isValid()) return;
+function AddInternForm({ onAdd, count }: AddInternFormProps) {
+  const [name, setName] = useState("");
+  const [score, setScore] = useState(0);
+  const [error, setError] = useState("");
 
-    addIntern({
-      id: interns.length + 1,
-      ...form,
+  function handleSubmit() {
+    if (name.trim() === "") {
+      setError("Name is required");
+      return;
+    }
+
+    if (score < 0 || score > 100) {
+      setError("Score must be between 0 and 100");
+      return;
+    }
+
+    setError("");
+
+    onAdd({
+      name,
+      score,
     });
 
-    handleReset();
+    setName("");
+    setScore(0);
+  }
+
+  function handleReset() {
+    setName("");
+    setScore(0);
+    setError("");
+  }
+
+  function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setName(e.target.value);
+
+    if (e.target.value.trim() !== "") {
+      setError("");
+    }
+  }
+
+  function handleScoreChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setScore(Number(e.target.value));
   }
 
   return (
-    <div style={{ marginBottom: "20px" }}>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div>
+      <p>Total Interns: {count}</p>
+
+      {error && <p>{error}</p>}
 
       <input
-        name="name"
         type="text"
-        value={form.name}
-        onChange={handleChange}
         placeholder="Name"
+        value={name}
+        onChange={handleNameChange}
       />
 
       <input
-        name="score"
         type="number"
-        value={form.score}
-        onChange={handleChange}
         placeholder="Score"
+        value={score}
+        onChange={handleScoreChange}
       />
-
-      <input
-        name="isPresent"
-        type="checkbox"
-        checked={form.isPresent}
-        onChange={handleChange}
-      />
-
-      <label>Present</label>
-
-      <select name="role" value={form.role} onChange={handleChange}>
-        <option value="Frontend">Frontend</option>
-        <option value="Backend">Backend</option>
-        <option value="Fullstack">Fullstack</option>
-      </select>
 
       <button onClick={handleSubmit}>Add Intern</button>
+
       <button onClick={handleReset}>Reset</button>
     </div>
   );
