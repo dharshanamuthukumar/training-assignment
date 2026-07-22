@@ -56,19 +56,27 @@ function AddInternForm({ onAdd, count }: AddInternFormProps) {
 
       {error && <p>{error}</p>}
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={handleNameChange}
-      />
+      <div>
+        <label htmlFor="internName">Intern Name</label>
+        <input
+          id="internName"
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={handleNameChange}
+        />
+      </div>
 
-      <input
-        type="number"
-        placeholder="Score"
-        value={score}
-        onChange={handleScoreChange}
-      />
+      <div>
+        <label htmlFor="internScore">Score</label>
+        <input
+          id="internScore"
+          type="number"
+          placeholder="Score"
+          value={score}
+          onChange={handleScoreChange}
+        />
+      </div>
 
       <button onClick={handleSubmit}>Add Intern</button>
 
