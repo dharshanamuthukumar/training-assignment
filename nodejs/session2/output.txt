@@ -1,0 +1,3 @@
+Line 1 — written by Node.js
+Line 2 — appended
+Line 3 — appended again
