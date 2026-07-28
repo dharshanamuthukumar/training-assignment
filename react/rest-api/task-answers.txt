@@ -1,0 +1,121 @@
+task 1.1
+    --the status code is 200 OK
+    --the content type is application/JSON;charset=utf-8
+    --there are 10 users
+    --the URL structure is collection
+
+task 1.2
+     --Status Code:404 Not Found
+     --Response Body: {}
+     -- The API returns a 404 Not Found status code along with an empty JSON object ({}). This indicates that the requested resource does not exist, and the API communicates this by returning a 404 error instead of user data.
+task 1.3
+     --10 posts were returned
+     --URL path-/posts
+     --query string- ?userId=1
+     --Yes. The endpoint /users/1/posts also returns the posts belonging to user 1.
+SECTION 2
+task 2.1
+     --status code :201 created
+     -- The response body contains the newly created post with the title, body, userId, and a generated id.
+     --id=101
+     -- No. The Location header was not returned. In a real-world REST API, a Location header is often included to indicate the URL of the newly created resource, but JSONPlaceholder does not provide it.
+// If the same POST request is sent a second time, the server will try to create the resource again.
+// In JSONPlaceholder, it will again return 201 Created because it is a fake API and does not check for duplicates.
+// In a well-designed real-world REST API, if creating an identical resource is not allowed,
+// the server should return:
+// 409 Conflict
+// This status code indicates that the request conflicts with an existing resource (for example, a duplicate record already exists). The client should modify the request before trying again.
+task 2.2
+     --PUT Response:
+         - id
+         - title
+         - body
+         - userId
+     --PATCH Response- title only
+     --PATCH is used to partially update a resource. Only the fields that need to be changed are sent, while the remaining fields stay unchanged.
+     --PUT is used when replacing the entire resource with new data. PATCH is used when updating only specific fields without affecting the rest of the resource.
+task 2.3
+     -- the status code 200 OK was returned
+     --in response body there was an empty Json object:{}
+     --204 No Content is generally more appropriate because the resource has been successfully deleted and there is no response body to return. A 200 OK is also valid if the server wants to return additional information about the deletion.
+
+SECTION 3
+task 3.1
+     --Scenario                            --Status code         --reason
+     --GET /interns — 15 interns found                     200 OK               The request was successful, and the server returned the list of 15 interns.
+     --POST /interns — intern created successfully         201 created          A new intern resource was successfully created.
+     --DELETE /interns/42 — deleted, no body needed        204 no content       The intern was deleted successfully, and there is no response body to return.
+     --GET /interns/9999 — this intern does not exist      404 not found        The requested intern resource does not exist.
+     --POST /interns — request body is missing name field  400 bad request      The client sent an invalid request because a required field (name) is missing.
+     --GET /interns — 15 interns found	                   200 OK	            The request was successful, and the server returned the list of 15 interns.
+     --POST /interns — intern created successfully	       201 Created	        A new intern resource was successfully created.
+     --DELETE /interns/42 — deleted, no body needed	       204 No Content	    The intern was deleted successfully, and there is no response body to return.
+     --GET /interns/9999 — this intern does not exist	   404 Not Found	    The requested intern resource does not exist.
+     --POST /interns — request body is missing name field  400 Bad Request	    The client sent an invalid request because a required field (name) is missing.
+     --GET /interns — user is not logged in                401 unauthorized     The user must authenticate (log in) before accessing the resource.
+     --POST /interns — database crashed             500 Internal Server Error   The server encountered an unexpected error while processing the request. 
+task 3.2
+     -- Returning 200 OK with an error message breaks API consumers because a 200 status tells the client that the request was successful. Most frontend applications first check the HTTP status code. If they receive 200, they assume the request succeeded and try to process the response as valid data instead of an error.
+     -- Errors should be indicated using the appropriate HTTP status code (such as 404, 400, or 500) so that the frontend can handle them correctly.
+
+SECTION 4
+task 4.1
+     --scenario A :path parameter
+     --scenario B :query parameter
+     --scenario C :query string
+     --scenario D :path parameter
+     --scenario E :query parameter
+
+task 4.2
+     --No. The fake token did not cause a 401 Unauthorized because JSONPlaceholder is a mock API. It does not validate or authenticate the Authorization header, so it ignores the token and returns the requested data.
+     --A real API would read the Authorization header, verify that the token is valid, check whether it has expired, and determine whether the user has permission to access the requested resource. If the token is invalid or missing, the server would return 401 Unauthorized.
+     --401 Unauthorized means the user has not provided valid authentication credentials (missing, invalid, or expired token). The client must authenticate again.
+       403 Forbidden means the user is authenticated with a valid token, but does not have permission to access the requested resource.
+task 4.3
+     ---- I would use `/interns/{id}/attendance` because attendance belongs to a specific intern. It clearly represents the relationship between an intern and their attendance records.
+     -- A separate `/attendance` resource is useful when attendance needs to be accessed independently, such as filtering by date, generating reports, or retrieving attendance for all interns.
+     -- `/interns/{id}/attendance` is simpler and easier to understand for intern-specific requests, while `/attendance` is more flexible for searching, filtering, and analysing attendance across multiple interns.
+
+SECTION 5
+task 5.1
+     -- Lines starting with `>` are the HTTP request headers sent by curl to the server, such as GET, Host, User-Agent, and Accept.
+     -- Lines starting with `<` are the HTTP response headers returned by the server, such as HTTP/1.1 200 OK, Content-Type, Content-Length, and Date.
+     -- The blank line separates the HTTP headers from the response body. Everything above the blank line is metadata (headers), and everything below it is the actual JSON data.
+     -- The `Host` header is automatically sent by curl with the value `jsonplaceholder.typicode.com`. It tells the server which website or virtual host the request is intended for.
+
+task 5.2
+     -- The POST request returns the newly created resource with an assigned id (typically 101 in JSONPlaceholder). The GET request uses that id to retrieve the resource.
+     -- In a real application, the Service Layer should make the POST request. The UI component should only collect user input and display the results. The Service Layer contains the business logic, validates the data, communicates with the API, and then passes the response back to the UI.
+     -- The Repository Layer is responsible for interacting with the data source (such as a database or an external API) and should not contain business logic. The Service Layer calls the Repository Layer to perform data operations, keeping the application modular, reusable, and easier to maintain.
+
+SECTION 6
+task 6.1
+     -- Mistake A: The endpoint uses a verb (`getAllInterns`) in the URL. REST APIs should use nouns for resources. Correct endpoint: `GET /interns`.
+
+     -- Mistake B: The DELETE action is being performed using a POST request. The correct REST design is `DELETE /interns/42`.
+
+     -- Mistake C: A GET request should not create a resource because GET is meant only for retrieving data. The correct REST design is `POST /interns` with the request body `{ "name": "Rahul", "role": "Frontend", "score": 88 }`.
+
+     -- Mistake D: The URL contains an action (`updateScore`). REST APIs should use the appropriate HTTP method instead. The correct endpoint is `PATCH /interns/42` with the request body `{ "score": 95 }`.
+
+     -- Mistake E: The resource ID is passed as a query parameter. Since it identifies a specific resource, it should be a path parameter. The correct endpoint is `DELETE /interns/42`.
+task 6.2
+     -- List all projects: GET | /projects | 200 OK
+
+     -- Get a specific project: GET | /projects/{projectId} | 200 OK
+
+     -- Create a project: POST | /projects | 201 Created
+
+     -- List all projects an intern is assigned to: GET | /interns/{internId}/projects | 200 OK
+
+     -- Assign an intern to a project: POST | /projects/{projectId}/interns/{internId} | 201 Created
+
+     -- Remove an intern from a project: DELETE | /projects/{projectId}/interns/{internId} | 204 No Content
+
+     -- Both `POST /projects/{id}/interns/{internId}` and `POST /interns/{id}/projects/{projectId}` are valid REST designs. The choice depends on which resource is considered the owner of the relationship.
+
+     -- If the application is project-centric (managing team members within projects), then `POST /projects/{projectId}/interns/{internId}` is more appropriate because the project owns the assignment.
+
+     -- If the application is intern-centric (managing an intern's profile and assignments), then `POST /interns/{internId}/projects/{projectId}` is a better choice because the intern owns the relationship.
+
+     -- The owner resource is determined by the primary focus of the application and which resource naturally manages the relationship.
