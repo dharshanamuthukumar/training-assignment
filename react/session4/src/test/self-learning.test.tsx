@@ -92,3 +92,64 @@ test("moves focus between form inputs using the Tab key", async () => {
 // Branch coverage is stricter than line coverage because
 // executing a line once does not guarantee that every
 // possible branch on that line has been tested.
+
+//task2 session5
+// Coverage report shows four main numbers:
+//
+// 1. Statements (%) - Percentage of executable statements that were run
+//    during tests.
+//
+// 2. Branches (%) - Percentage of decision paths tested, such as if/else,
+//    ternary operators, and logical conditions.
+//
+// 3. Functions (%) - Percentage of functions that were called during tests.
+//
+// 4. Lines (%) - Percentage of source code lines executed by tests.
+//
+// The lowest coverage number should be identified from the coverage table.
+// The lowest value shows the area of code that needs more tests.
+//
+// Example:
+// If Branch coverage is lowest, it means some conditions or edge cases
+// are not tested even though the main code paths are covered.
+
+// Coverage report shows four main metrics:
+//
+// 1. Statements:
+//    Percentage of executable statements that were run by tests.
+//
+// 2. Branches:
+//    Percentage of decision paths tested, such as if/else conditions.
+//
+// 3. Functions:
+//    Percentage of functions that were called during testing.
+//
+// 4. Lines:
+//    Percentage of source code lines executed.
+//
+// The lowest percentage shows the least tested area and indicates
+// where additional tests may be needed.
+import { test, expect } from "vitest";
+
+test("just to hit the line", () => {
+  // Arrange
+  const form = {
+    name: "",
+    score: 0,
+    isPresent: true,
+    role: "Frontend",
+  };
+
+  // Act
+  JSON.stringify(form);
+
+  // Assert
+  expect(true).toBe(true);
+});
+
+// This test may increase coverage because it executes code,
+// but it does not improve test quality.
+// The assertion always passes, so it cannot detect incorrect behavior
+// or catch any real bug.
+// High coverage numbers do not always mean the code is well tested.
+// Meaningful assertions are required to verify correctness.
