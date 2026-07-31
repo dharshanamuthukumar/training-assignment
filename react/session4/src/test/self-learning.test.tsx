@@ -65,6 +65,8 @@ test("moves focus between form inputs using the Tab key", async () => {
 
   const nameInput = screen.getByPlaceholderText("Name");
   const scoreInput = screen.getByPlaceholderText("Score");
+  const roleSelect = screen.getByRole("combobox", { name: "Role" });
+  const isPresentCheckbox = screen.getByRole("checkbox", { name: "Present" });
   const addButton = screen.getByRole("button", { name: "Add Intern" });
 
   await user.tab();
@@ -72,6 +74,12 @@ test("moves focus between form inputs using the Tab key", async () => {
 
   await user.tab();
   expect(scoreInput).toHaveFocus();
+
+  await user.tab();
+  expect(roleSelect).toHaveFocus();
+
+  await user.tab();
+  expect(isPresentCheckbox).toHaveFocus();
 
   await user.tab();
   expect(addButton).toHaveFocus();

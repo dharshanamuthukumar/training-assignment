@@ -1,36 +1,52 @@
 import { useState } from "react";
+import { validateInternForm } from "../utils/intern-validation";
 
-interface InternFormState {
+export interface Intern {
+  id: number;
   name: string;
   score: number;
-  isPresent: boolean;
   role: string;
+  isPresent: boolean;
+}
+
+export interface InternFormState {
+  name: string;
+  score: number;
+  role: string;
+  isPresent: boolean;
 }
 
 interface UseInternFormReturn {
   form: InternFormState;
   error: string;
+
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => void;
+
   handleReset: () => void;
-  isValid: () => boolean;
+
+  submit: () => boolean;
 }
 
 const initialForm: InternFormState = {
   name: "",
   score: 0,
-  isPresent: true,
   role: "Frontend",
+  isPresent: true,
 };
 
-function useInternForm(): UseInternFormReturn {
-  const [form, setForm] = useState<InternFormState>(initialForm);
-  const [error, setError] = useState<string>("");
+function useInternForm(
+  addIntern: (intern: Intern) => void,
+  generateId: () => number = Date.now,
+): UseInternFormReturn {
+  const [form, setForm] = useState(initialForm);
+
+  const [error, setError] = useState("");
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ): void {
+  ) {
     const { name, value, type } = e.target;
 
     setForm((prev) => ({
@@ -42,33 +58,51 @@ function useInternForm(): UseInternFormReturn {
             ? Number(value)
             : value,
     }));
+    setError("");
   }
 
-  function handleReset(): void {
+  function handleReset() {
     setForm(initialForm);
     setError("");
   }
 
-  function isValid(): boolean {
-    if (!form.name.trim()) {
-      setError("Name is required");
+  function submit() {
+    const validationError = validateInternForm(form.name, form.score);
+
+    if (validationError) {
+      setError(validationError);
       return false;
     }
 
-    if (form.score < 0 || form.score > 100) {
-      setError("Score must be 0–100");
-      return false;
-    }
+    addIntern({
+      id: generateId(),
+      name: form.name,
+      score: form.score,
+      role: form.role,
+      isPresent: form.isPresent,
+    });
 
     setError("");
+
+    setForm(initialForm);
+
     return true;
   }
 
-  return { form, error, handleChange, handleReset, isValid };
+  return {
+    form,
+    error,
+    handleChange,
+    handleReset,
+    submit,
+  };
 }
 
 export default useInternForm;
-// The UseInternFormReturn interface defines exactly what the custom hook
-// returns. It improves type safety, provides better editor auto-completion,
-// makes the hook easier to understand, and ensures any component using
-// the hook receives the expected properties and functions.
+
+// Task 6.1
+// Validation has been extracted into a pure function.
+// addIntern is injected instead of coming from context.
+// generateId is injected with a default implementation.
+// This makes the hook easier to test because external
+// dependencies can be replaced with mocks.
