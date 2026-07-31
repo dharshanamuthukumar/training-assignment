@@ -1,43 +1,42 @@
-import { useMemo } from "react";
-import { useInterns } from "../contexts/intern-context";
+import { useEffect, useState } from "react";
+
+interface Intern {
+  id: number;
+  name: string;
+  score: number;
+}
 
 function ScoreStats() {
-  const { interns } = useInterns();
+  const [interns, setInterns] = useState<Intern[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // useMemo recalculates the statistics only when the interns array changes.
-  // Without useMemo, these calculations would run on every render, even when
-  // the intern data has not changed, which can be wasteful for large datasets.
-  const stats = useMemo(() => {
-    console.log("Recalculating stats...");
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInterns([
+        { id: 1, name: "Rahul", score: 92 },
+        { id: 2, name: "Priya", score: 78 },
+      ]);
 
-    const scores = interns.map((i) => i.score);
+      setLoading(false);
+    }, 500);
 
-    return {
-      highest: scores.length > 0 ? Math.max(...scores) : 0,
-      lowest: scores.length > 0 ? Math.min(...scores) : 0,
-      average:
-        scores.length > 0
-          ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
-          : 0,
-      passing: interns.filter((i) => i.score >= 50).length,
-    };
-  }, [interns]);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <p>Loading interns...</p>;
+  }
 
   return (
-    <div
-      style={{
-        padding: "12px",
-        background: "#f9f9f9",
-        marginBottom: "12px",
-      }}
-    >
-      <p>
-        Highest: {stats.highest} | Lowest: {stats.lowest} | Avg: {stats.average}
-      </p>
+    <div>
+      <h2>Intern Scores</h2>
 
-      <p>
-        Passing: {stats.passing} of {interns.length}
-      </p>
+      {interns.map((intern) => (
+        <div key={intern.id}>
+          <p>{intern.name}</p>
+          <p>Score: {intern.score}</p>
+        </div>
+      ))}
     </div>
   );
 }
