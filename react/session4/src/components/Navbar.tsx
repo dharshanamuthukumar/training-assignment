@@ -13,8 +13,7 @@ function Navbar() {
         justifyContent: "space-between",
       }}
     >
-      <span>Intern Dashboard</span>
-
+      <h1 style={{ margin: 0 }}>Intern Dashboard</h1>
       <button onClick={toggleTheme}>
         Switch to {theme === "light" ? "Dark" : "Light"} Mode
       </button>
