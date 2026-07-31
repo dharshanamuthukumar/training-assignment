@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
+import { filterInterns } from "../utils/intern-utils";
 
 interface Intern {
   id: number;
@@ -19,17 +20,15 @@ interface UseInternSearchReturn {
   };
 }
 
-function useInternSearch(interns: Intern[]): UseInternSearchReturn {
-  const [search, setSearch] = useState<string>("");
+function useInternSearch(
+  interns: Intern[],
+  filter: typeof filterInterns = filterInterns,
+): UseInternSearchReturn {
+  const [search, setSearch] = useState("");
 
-  const filtered = useMemo<Intern[]>(
-    () =>
-      interns.filter(
-        (i) =>
-          i.name.toLowerCase().includes(search.toLowerCase()) ||
-          i.role.toLowerCase().includes(search.toLowerCase()),
-      ),
-    [interns, search],
+  const filtered = useMemo(
+    () => filter(interns, search),
+    [interns, search, filter],
   );
 
   const stats = useMemo(
@@ -47,7 +46,12 @@ function useInternSearch(interns: Intern[]): UseInternSearchReturn {
     [interns],
   );
 
-  return { search, setSearch, filtered, stats };
+  return {
+    search,
+    setSearch,
+    filtered,
+    stats,
+  };
 }
 
 export default useInternSearch;
