@@ -1,39 +1,9 @@
 import { useCallback } from "react";
 import { useInterns } from "../contexts/intern-context";
-import { useTheme } from "../contexts/theme-context";
-
-interface InternRowProps {
-  id: number;
-  name: string;
-  score: number;
-  onRemove: (id: number) => void;
-}
-
-function InternRow({ id, name, score, onRemove }: InternRowProps) {
-  const { theme } = useTheme();
-
-  console.log(`InternRow rendered: ${name}`);
-
-  return (
-    <div
-      style={{
-        background: theme === "light" ? "#fff" : "#2a2a2a",
-        color: theme === "light" ? "#000" : "#eee",
-        padding: "8px",
-        margin: "4px 0",
-      }}
-    >
-      <span>
-        {name} — {score}
-      </span>
-
-      <button onClick={() => onRemove(id)}>Remove</button>
-    </div>
-  );
-}
+import InternRow from "./InternRow";
 
 function InternListWithCallback() {
-  const { interns, removeIntern } = useInterns();
+  const { interns, search, removeIntern } = useInterns();
 
   const handleRemove = useCallback(
     (id: number): void => {
@@ -42,14 +12,31 @@ function InternListWithCallback() {
     [removeIntern],
   );
 
+  const query = (search || "").toLowerCase().trim();
+  const filtered = interns.filter(
+    (i) =>
+      i.name.toLowerCase().includes(query) ||
+      (i.role && i.role.toLowerCase().includes(query)),
+  );
+
+  if (filtered.length === 0) {
+    return (
+      <div style={{ marginTop: "16px" }}>
+        <p>No interns found</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {interns.map((i) => (
+    <div style={{ marginTop: "16px" }}>
+      {filtered.map((i) => (
         <InternRow
           key={i.id}
           id={i.id}
           name={i.name}
           score={i.score}
+          role={i.role}
+          isPresent={i.isPresent}
           onRemove={handleRemove}
         />
       ))}
@@ -58,8 +45,3 @@ function InternListWithCallback() {
 }
 
 export default InternListWithCallback;
-// useCallback memoizes the function so that the same function reference
-// is reused between renders unless its dependencies change. This helps
-// prevent unnecessary re-renders of child components that receive the
-// function as a prop, especially when those components are optimized
-// using React.memo.

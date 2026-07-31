@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 type Theme = "light" | "dark";
 
@@ -14,6 +14,16 @@ const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+      document.documentElement.style.setProperty("--background-color", "#1a1a1a");
+    } else {
+      document.body.classList.remove("dark");
+      document.documentElement.style.setProperty("--background-color", "#ffffff");
+    }
+  }, [theme]);
 
   function toggleTheme(): void {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));

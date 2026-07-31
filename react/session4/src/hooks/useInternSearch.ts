@@ -24,8 +24,10 @@ function useInternSearch(interns: Intern[]): UseInternSearchReturn {
 
   const filtered = useMemo<Intern[]>(
     () =>
-      interns.filter((i) =>
-        i.name.toLowerCase().includes(search.toLowerCase()),
+      interns.filter(
+        (i) =>
+          i.name.toLowerCase().includes(search.toLowerCase()) ||
+          i.role.toLowerCase().includes(search.toLowerCase()),
       ),
     [interns, search],
   );
