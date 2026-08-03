@@ -11,7 +11,7 @@ export interface Intern {
 
 export interface InternFormState {
   name: string;
-  score: number;
+  score: number | "";
   role: string;
   isPresent: boolean;
 }
@@ -31,7 +31,7 @@ interface UseInternFormReturn {
 
 const initialForm: InternFormState = {
   name: "",
-  score: 0,
+  score: "",
   role: "Frontend",
   isPresent: true,
 };
@@ -55,7 +55,7 @@ function useInternForm(
         type === "checkbox"
           ? (e.target as HTMLInputElement).checked
           : name === "score"
-            ? Number(value)
+            ? (value === "" ? "" : Number(value))
             : value,
     }));
     setError("");
@@ -67,7 +67,8 @@ function useInternForm(
   }
 
   function submit() {
-    const validationError = validateInternForm(form.name, form.score);
+    const numericScore = form.score === "" ? 0 : Number(form.score);
+    const validationError = validateInternForm(form.name, numericScore);
 
     if (validationError) {
       setError(validationError);
@@ -77,7 +78,7 @@ function useInternForm(
     addIntern({
       id: generateId(),
       name: form.name,
-      score: form.score,
+      score: numericScore,
       role: form.role,
       isPresent: form.isPresent,
     });

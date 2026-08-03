@@ -67,7 +67,7 @@ test.describe("Locator Practice", () => {
     const scoreInput = page.getByPlaceholder("Score");
 
     await expect(scoreInput).toBeVisible();
-    await expect(scoreInput).toHaveValue("0");
+    await expect(scoreInput).toHaveValue("");
   });
 
   test("finds text with exact matching", async ({ page }) => {
@@ -95,7 +95,7 @@ test.describe("Assertions", () => {
   });
 
   test("score input starts with 0", async ({ page }) => {
-    await expect(page.getByPlaceholder("Score")).toHaveValue("0");
+    await expect(page.getByPlaceholder("Score")).toHaveValue("");
   });
 
   test("Add Intern button is visible", async ({ page }) => {
