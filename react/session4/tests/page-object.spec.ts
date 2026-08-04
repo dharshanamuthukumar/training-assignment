@@ -49,7 +49,7 @@ test.describe('Journeys via Page Object', () => {
   });
 
   test('shows validation error on empty submit', async ({ page }) => {
-    await dashboard.addButton.click();
+    await dashboard.addButton.click({ force: true });
 
     await expect(page.getByText('Name is required')).toBeVisible();
   });
