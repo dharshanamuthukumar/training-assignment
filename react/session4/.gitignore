@@ -13,7 +13,6 @@ dist-ssr/
 *.local
 src/test/fixes/
 src/test/violations/
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
