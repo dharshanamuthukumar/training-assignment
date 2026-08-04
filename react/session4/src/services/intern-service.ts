@@ -1,4 +1,5 @@
 import type { Intern, InternFormState } from "../types/intern";
+import { assert } from "../utils/assert";
 
 // Creates a new Intern object from form data.
 export function createIntern(
@@ -16,7 +17,7 @@ export function createIntern(
 
 export function validateInternForm(
   formOrName: InternFormState | string,
-  scoreArg?: number
+  scoreArg?: number,
 ): string | null {
   let name: string;
   let score: number;
@@ -29,6 +30,18 @@ export function validateInternForm(
     score = scoreArg ?? 0;
   }
 
+  // Task 5.2 — Precondition assertions
+  assert(
+    typeof name === "string",
+    `validateInternForm: name must be a string, got: ${typeof name}`,
+  );
+
+  assert(
+    typeof score === "number",
+    `validateInternForm: score must be a number, got: ${typeof score}`,
+  );
+
+  // Business validation
   if (!name.trim()) {
     return "Name is required";
   }
@@ -39,6 +52,7 @@ export function validateInternForm(
 
   return null;
 }
+
 // Returns the average score, or 0 for an empty list.
 export function calculateAverageScore(interns: Intern[]): number {
   if (interns.length === 0) {
@@ -63,15 +77,56 @@ export function filterInterns(interns: Intern[], query: string): Intern[] {
 
   const search = query.toLowerCase();
 
-  return interns.filter(
+  const result = interns.filter(
     (intern) =>
       intern.name.toLowerCase().includes(search) ||
       intern.role.toLowerCase().includes(search),
   );
+
+  // Task 5.3 — Postcondition assertion
+  assert(
+    Array.isArray(result),
+    "filterInterns: expected filter() to return an array",
+  );
+
+  return result;
 }
 
-// The service layer should not import React because it should contain only
-// business logic and data operations, independent of the UI framework.
-// Keeping it pure makes the code easier to test, reuse, and maintain.
-// If React imports were added, tests would need a React environment and
-// would become more complex, slower, and tightly coupled to components.
+// -----------------------------------------------------------------------------
+// Task 2.2
+// The service layer should not import React because it contains only business
+// logic. Keeping it framework-independent makes it easier to reuse, test,
+// and maintain. React imports would couple the service layer to the UI and
+// require a React environment during testing.
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Silent Failure Audit
+// No silent failure patterns were found in this service layer.
+// Validation failures return explicit messages instead of silently failing.
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Task 5.2
+// The assert checks verify the function's preconditions. They ensure the
+// caller has provided arguments of the correct type and immediately throw
+// an error if the function is used incorrectly.
+//
+// The validation logic below checks business rules such as requiring a
+// non-empty name and a score between 0 and 100. These checks return
+// validation messages so the user can correct their input.
+//
+// Assertions throw immediately for programmer errors, while validation
+// handles expected user input errors.
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Task 5.3
+// The postcondition assertion verifies that filterInterns always returns an
+// array. Although Array.prototype.filter() always returns an array under
+// normal circumstances, the assertion documents this expectation.
+//
+// Documentation assertions become valuable during future refactoring or when
+// integrating with external libraries, as they detect broken assumptions
+// immediately instead of allowing incorrect behaviour to propagate.
+// -----------------------------------------------------------------------------

@@ -1,3 +1,10 @@
+// Silent failure audit — useInternForm.ts
+// Pattern 1: No silent failures found.
+// - Validation is delegated to validateInternForm().
+// - submit() returns a boolean to indicate success or failure.
+// - No try/catch blocks that swallow errors.
+// - No null/undefined/-1 error returns.
+// - No default values hiding missing required data.
 import { useState } from "react";
 import { validateInternForm } from "../services/intern-service";
 export interface Intern {
@@ -54,7 +61,9 @@ function useInternForm(
         type === "checkbox"
           ? (e.target as HTMLInputElement).checked
           : name === "score"
-            ? (value === "" ? "" : Number(value))
+            ? value === ""
+              ? ""
+              : Number(value)
             : value,
     }));
     setError("");
@@ -120,3 +129,8 @@ export default useInternForm;
 // useInternForm.ts does not belong purely to the service layer or UI layer.
 // It acts as a coordination layer (custom hook layer) between UI components,
 // services, and context.
+
+// Silent failure audit conclusion:
+// No silent failure patterns were found.
+// Validation failures are reported through an error message and submit()
+// explicitly returns false, making failures visible to the caller.
