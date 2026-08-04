@@ -45,3 +45,21 @@ export function SummaryBarContainer() {
     />
   );
 }
+
+// Seperation of concerns
+// Job: "This component displays summary statistics about interns."
+// Concerns mixed : None (or mention if it calculates statistics itself)
+
+// A presentational component should not import the service layer directly.
+// The container component or context should call the service and pass the
+// required data as props. This keeps the UI component focused only on
+// displaying data and maintains separation of concerns.
+
+// If a presentational component imports services directly, its tests need
+// to mock the service layer and become coupled to business logic.
+// If the container calls the service and passes props, the component can be
+// tested with simple input props without mocking anything, making tests
+// simpler and more reliable.
+
+//after refactor
+// "SummaryBar.tsx displays summary information received through props."

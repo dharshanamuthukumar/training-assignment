@@ -1,4 +1,3 @@
-// src/utils/intern-validation.ts
 
 export function validateInternForm(name: string, score: number): string | null {
   if (!name.trim()) {

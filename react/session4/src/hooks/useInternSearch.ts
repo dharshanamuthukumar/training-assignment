@@ -55,3 +55,9 @@ function useInternSearch(
 }
 
 export default useInternSearch;
+// seperation of concers
+// Job: "This hook manages searching and filtering interns."
+// Concerns mixed : None
+
+//after refactor
+// "useInternSearch.ts manages search state and filtering coordination."

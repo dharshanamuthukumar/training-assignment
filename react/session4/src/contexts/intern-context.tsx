@@ -1,98 +1,79 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { useInternRepository } from "../repositories/intern-repository";
+import {
+  createIntern,
+  calculateAverageScore,
+  filterInterns,
+} from "../services/intern-service";
+import type { Intern, InternFormState } from "../types/intern";
 
-export interface Intern {
-  id: number;
-  name: string;
-  score: number;
-  role: string;
-  isPresent: boolean;
-}
-
-interface NewIntern {
-  name: string;
-  score: number;
-  role: string;
-  isPresent: boolean;
-}
-
-export interface InternContextType {
+interface InternContextType {
   interns: Intern[];
+  filteredInterns: Intern[];
   search: string;
   setSearch: (value: string) => void;
-  isLoading: boolean;
-  addIntern: (intern: NewIntern) => void;
+  averageScore: number;
+  addIntern: (form: InternFormState) => void;
   removeIntern: (id: number) => void;
 }
 
-interface InternProviderProps {
-  children: ReactNode;
-  generateId?: () => number;
-}
+export const InternContext = createContext<InternContextType | undefined>(
+  undefined,
+);
 
-const InternContext = createContext<InternContextType | null>(null);
-
-const initialInterns: Intern[] = [
-  { id: 1, name: "Rahul", score: 92, role: "Frontend", isPresent: true },
-  { id: 2, name: "Priya", score: 78, role: "Backend", isPresent: true },
-  { id: 3, name: "Amit", score: 45, role: "Frontend", isPresent: false },
-  { id: 4, name: "Sneha", score: 95, role: "Fullstack", isPresent: true },
-];
-
-export function InternProvider({
-  children,
-  generateId = () => Date.now(),
-}: InternProviderProps) {
-  const [interns, setInterns] = useState<Intern[]>(initialInterns);
-  const [search, setSearch] = useState("");
-  const [isLoading] = useState(false);
-
-  function addIntern(intern: NewIntern): void {
-    const newIntern: Intern = {
-      id: generateId(),
-      ...intern,
-    };
-
-    setInterns((prev) => [...prev, newIntern]);
-  }
-
-  function removeIntern(id: number): void {
-    setInterns((prev) => prev.filter((i) => i.id !== id));
-  }
-
-  return (
-    <InternContext.Provider
-      value={{
-        interns,
-        search,
-        setSearch,
-        isLoading,
-        addIntern,
-        removeIntern,
-      }}
-    >
-      {children}
-    </InternContext.Provider>
-  );
-}
-
-export function useInterns(): InternContextType {
+export function useInterns() {
   const context = useContext(InternContext);
-
   if (!context) {
-    throw new Error("useInterns must be used inside InternProvider");
+    throw new Error("useInterns must be used within an InternProvider");
   }
-
   return context;
 }
 
-// Task 1.1
-// Testability audit — intern-context.tsx
-// Q1 Predictable output? PARTIALLY — depends on React Context state.
-// Q2 No external deps? PARTIALLY — relies on React Context.
-// Q3 Dependencies injectable? YES — generateId can now be injected.
-// Verdict: MODERATELY TESTABLE
+const INITIAL_INTERNS: InternFormState[] = [
+  { name: "Rahul", score: 92, isPresent: true, role: "Frontend" },
+  { name: "Priya", score: 78, isPresent: false, role: "Backend" },
+  { name: "Amit", score: 45, isPresent: true, role: "Design" },
+  { name: "Sneha", score: 88, isPresent: true, role: "Frontend" },
+];
 
-// Task 5.1
-// Injecting generateId makes the provider easier to test. Tests can supply a
-// fixed ID generator so results are deterministic and repeatable, while the
-// default behavior still works normally in production.
+const INITIAL_INTERN_OBJECTS = INITIAL_INTERNS.map((form, index) =>
+  createIntern(form, () => index + 1),
+);
+
+export function InternProvider({
+  children,
+  generateId,
+}: {
+  children: ReactNode;
+  generateId?: () => number;
+}) {
+  const repo = useInternRepository(INITIAL_INTERN_OBJECTS);
+  const [search, setSearch] = useState("");
+
+  const filteredInterns = filterInterns(repo.interns, search);
+
+  const value: InternContextType = {
+    interns: repo.interns,
+    filteredInterns,
+    search,
+    setSearch,
+    averageScore: calculateAverageScore(repo.interns),
+    addIntern: (form: InternFormState) => {
+      const intern = createIntern(form, generateId);
+      repo.add(intern);
+    },
+    removeIntern: (id: number) => {
+      repo.remove(id);
+    },
+  };
+
+  return (
+    <InternContext.Provider value={value}>{children}</InternContext.Provider>
+  );
+}
+
+// After refactoring, InternProvider only wires the service and repository
+// layers together, so it is much smaller.
+// Yes, intern ID generation can now be changed without modifying
+// intern-context.tsx — change createIntern in intern-service.ts instead.
+// "intern-context.tsx wires the service and repository layers together into a context value."

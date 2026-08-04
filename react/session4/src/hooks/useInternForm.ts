@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { validateInternForm } from "../utils/intern-validation";
-
+import { validateInternForm } from "../services/intern-service";
 export interface Intern {
   id: number;
   name: string;
@@ -107,3 +106,17 @@ export default useInternForm;
 // generateId is injected with a default implementation.
 // This makes the hook easier to test because external
 // dependencies can be replaced with mocks.
+
+// seperation of concern
+// Job: "This hook manages the state and submission logic for the intern form."
+// Concerns mixed : None
+
+// useInternForm.ts does not belong purely to the service layer or UI layer.
+// It acts as a coordination layer (custom hook layer) between UI components,
+// services, and context. It manages form state, calls service functions like
+// validation, and triggers context actions like addIntern.
+// This layer can be called the "hook layer" or "application coordination layer".
+
+// useInternForm.ts does not belong purely to the service layer or UI layer.
+// It acts as a coordination layer (custom hook layer) between UI components,
+// services, and context.

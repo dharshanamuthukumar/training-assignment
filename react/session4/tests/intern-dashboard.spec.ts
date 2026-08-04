@@ -174,3 +174,4 @@ test.describe("Theme Toggle", () => {
     ).toBeVisible();
   });
 });
+  

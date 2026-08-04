@@ -88,3 +88,10 @@ function AddInternForm({ onAdd, count }: AddInternFormProps & { onAdd?: (intern:
 }
 
 export default AddInternForm;
+// seperation of concerns
+// Job: "This component renders the intern form and handles user interactions."
+// Concerns mixed : If it performs validation, API calls, state management, and rendering together, list them.
+
+//after refactor
+// "AddInternForm.tsx renders the intern form UI and delegates form handling
+// to the useInternForm hook."
