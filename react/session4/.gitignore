@@ -7,15 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+node_modules/
+dist/
+dist-ssr/
 *.local
+react/session4/src/test/fixes/
+react/session4/src/test/violations/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.Sidea
 .DS_Store
 *.suo
 *.ntvs*
