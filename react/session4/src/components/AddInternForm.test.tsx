@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "../test/test-utils";
 import userEvent from "@testing-library/user-event";
 import AddInternForm from "./AddInternForm";
+import { InternProvider } from "../contexts/intern-context";
 
 // userEvent is preferred over fireEvent because it simulates
 // real user interactions such as typing, clicking, focusing,
@@ -9,7 +10,11 @@ import AddInternForm from "./AddInternForm";
 test("updates name when user types", async () => {
   const user = userEvent.setup();
 
-  render(<AddInternForm onAdd={() => {}} count={0} />);
+  render(
+    <InternProvider>
+      <AddInternForm onAdd={() => {}} count={0} />
+    </InternProvider>
+  );
 
   await user.type(screen.getByPlaceholderText("Name"), "Rahul");
 
@@ -19,7 +24,11 @@ test("updates name when user types", async () => {
 test("updates score when user types", async () => {
   const user = userEvent.setup();
 
-  render(<AddInternForm onAdd={() => {}} count={0} />);
+  render(
+    <InternProvider>
+      <AddInternForm onAdd={() => {}} count={0} />
+    </InternProvider>
+  );
 
   const scoreInput = screen.getByPlaceholderText("Score");
 
@@ -35,7 +44,11 @@ test("updates score when user types", async () => {
 test("resets name input when Reset is clicked", async () => {
   const user = userEvent.setup();
 
-  render(<AddInternForm onAdd={() => {}} count={0} />);
+  render(
+    <InternProvider>
+      <AddInternForm onAdd={() => {}} count={0} />
+    </InternProvider>
+  );
 
   await user.type(screen.getByPlaceholderText("Name"), "Rahul");
   await user.click(screen.getByRole("button", { name: "Reset" }));
@@ -43,25 +56,37 @@ test("resets name input when Reset is clicked", async () => {
   expect(screen.getByPlaceholderText("Name")).toHaveValue("");
 });
 
-test("calls onAdd with intern data when form is submitted", async () => {
+test("calls onAdd with intern data", async () => {
   const user = userEvent.setup();
+
   const onAdd = vi.fn();
 
-  render(<AddInternForm onAdd={onAdd} count={0} />);
+  render(
+    <InternProvider>
+      <AddInternForm onAdd={onAdd} count={0} />
+    </InternProvider>,
+  );
 
-  await user.type(screen.getByPlaceholderText("Name"), "Rahul");
+  await user.type(screen.getByLabelText(/intern name/i), "Rahul");
 
-  await user.clear(screen.getByPlaceholderText("Score"));
-  await user.type(screen.getByPlaceholderText("Score"), "92");
+  await user.clear(screen.getByLabelText(/score/i));
 
-  await user.click(screen.getByRole("button", { name: "Add Intern" }));
+  await user.type(screen.getByLabelText(/score/i), "90");
+
+  await user.click(
+    screen.getByRole("button", {
+      name: /add intern/i,
+    }),
+  );
 
   expect(onAdd).toHaveBeenCalledTimes(1);
 
   expect(onAdd).toHaveBeenCalledWith(
     expect.objectContaining({
       name: "Rahul",
-      score: 92,
+      score: 90,
+      role: "Frontend",
+      isPresent: true,
     }),
   );
 });
@@ -93,7 +118,7 @@ test("shows error when score is above 100", async () => {
   await user.click(screen.getByRole("button", { name: "Add Intern" }));
 
   expect(
-    screen.getByText("Score must be between 0 and 100"),
+    screen.getByText("Score must be 0–100"),
   ).toBeInTheDocument();
 });
 

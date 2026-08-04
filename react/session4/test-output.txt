@@ -1,0 +1,294 @@
+
+> session4@0.0.0 test:run
+> vitest run
+
+
+ RUN  v4.1.10 c:/Users/dhars/OneDrive/Desktop/training assessment/react/session4
+
+ ❯ src/components/QueryDemo.test.tsx (3 tests | 3 failed) 60ms
+   × getByText throws when element is missing 43ms
+   × queryBy returns null when element is missing 6ms
+   × getAllBy finds multiple elements 4ms
+ ❯ src/components/ScoreBadge.test.tsx (0 test)
+ ❯ src/components/InternRow.test.tsx (3 tests | 3 failed) 63ms
+   × finds the Remove button by role 43ms
+   × calls onRemove with the correct id when Remove is clicked 9ms
+   × does not call onRemove when row is only rendered 4ms
+ ❯ src/components/InternListWithCallback.test.tsx (2 tests | 2 failed) 54ms
+   × renders all interns from the mocked context 45ms
+   × renders the correct number of Remove buttons 5ms
+ ❯ src/components/AddInternForm.test.tsx (8 tests | 8 failed) 79ms
+   × updates name when user types 44ms
+   × updates score when user types 5ms
+   × resets name input when Reset is clicked 5ms
+   × calls onAdd with intern data 5ms
+   × shows error when name is empty on submit 4ms
+   × shows error when score is above 100 4ms
+   × does not call onAdd when form is invalid 5ms
+   × error clears when valid name is entered after failed submit 3ms
+ ❯ src/components/Navbar.test.tsx (4 tests | 3 failed) 181ms
+   × renders the dashboard title 44ms
+   × theme toggle button is visible 5ms
+   × theme toggle button label changes after click 7ms
+ ❯ src/components/ThemedCard.test.tsx (10 tests | 10 failed) 96ms
+   × renders the intern name 46ms
+   × renders the score 5ms
+   × shows Pass when score is 50 or above 10ms
+   × shows Fail when score is below 50 5ms
+   × does not show Fail when the intern has passed 4ms
+   × does not show Pass when the intern has failed 7ms
+   × renders score of 0 correctly 3ms
+   × renders score of 100 correctly 3ms
+   × renders a different name and score without mixing up values 3ms
+   × no console errors during ThemedCard render 6ms
+ ❯ src/hooks/useInternForm.test.tsx (0 test)
+ ❯ src/components/ScoreStats.test.tsx (0 test)
+ ❯ src/test/global-state-bug.test.ts (0 test)
+ ❯ src/test/generate-id.test.ts (0 test)
+ ❯ src/test/global-state-fixed.test.ts (0 test)
+ ❯ src/test/intern-context.test.tsx (0 test)
+ ❯ src/test/intern-request.test.ts (0 test)
+ ❯ src/test/intern-utils.test.ts (0 test)
+ ❯ src/test/intern-service.test.ts (0 test)
+ ❯ src/test/intern-validation.test.ts (0 test)
+ ❯ src/test/SummaryBar.test.tsx (0 test)
+ ❯ src/test/self-learning.test.tsx (0 test)
+ ❯ src/test/useInternForm.test.tsx (0 test)
+ ❯ src/test/useInternSearch.test.tsx (0 test)
+ ❯ src/test/fixes/fix-1.test.ts (0 test)
+ ❯ src/test/fixes/fix-2.test.ts (0 test)
+ ❯ src/test/fixes/fix-3.test.ts (0 test)
+ ❯ src/test/fixes/fix-4.test.ts (0 test)
+ ❯ src/test/violations/violation-1.test.ts (0 test)
+ ❯ src/test/violations/violation-3.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 21 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/ScoreBadge.test.tsx [ src/components/ScoreBadge.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/components/ScoreBadge.test.tsx:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/50]⎯
+
+ FAIL  src/components/ScoreStats.test.tsx [ src/components/ScoreStats.test.tsx ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/components/ScoreStats.test.tsx:9:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/50]⎯
+
+ FAIL  src/hooks/useInternForm.test.tsx [ src/hooks/useInternForm.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/hooks/useInternForm.test.tsx:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/50]⎯
+
+ FAIL  src/test/generate-id.test.ts [ src/test/generate-id.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/generate-id.test.ts:4:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/50]⎯
+
+ FAIL  src/test/global-state-bug.test.ts [ src/test/global-state-bug.test.ts ]
+Error: Vitest failed to find the runner. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/global-state-bug.test.ts:6:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/50]⎯
+
+ FAIL  src/test/global-state-fixed.test.ts [ src/test/global-state-fixed.test.ts ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/global-state-fixed.test.ts:20:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/50]⎯
+
+ FAIL  src/test/intern-context.test.tsx [ src/test/intern-context.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/intern-context.test.tsx:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/50]⎯
+
+ FAIL  src/test/intern-request.test.ts [ src/test/intern-request.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/intern-request.test.ts:4:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/50]⎯
+
+ FAIL  src/test/intern-service.test.ts [ src/test/intern-service.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/intern-service.test.ts:12:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/50]⎯
+
+ FAIL  src/test/intern-utils.test.ts [ src/test/intern-utils.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/intern-utils.test.ts:36:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/50]⎯
+
+ FAIL  src/test/intern-validation.test.ts [ src/test/intern-validation.test.ts ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/intern-validation.test.ts:4:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/50]⎯
+
+ FAIL  src/test/self-learning.test.tsx [ src/test/self-learning.test.tsx ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/self-learning.test.tsx:10:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/50]⎯
+
+ FAIL  src/test/SummaryBar.test.tsx [ src/test/SummaryBar.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/SummaryBar.test.tsx:5:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/50]⎯
+
+ FAIL  src/test/useInternForm.test.tsx [ src/test/useInternForm.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/useInternForm.test.tsx:6:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/50]⎯
+
+ FAIL  src/test/useInternSearch.test.tsx [ src/test/useInternSearch.test.tsx ]
+TypeError: Cannot read properties of undefined (reading 'config')
+ ❯ src/test/useInternSearch.test.tsx:22:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/50]⎯
+
+ FAIL  src/test/fixes/fix-1.test.ts [ src/test/fixes/fix-1.test.ts ]
+Error: Vitest failed to find the runner. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/fixes/fix-1.test.ts:10:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/50]⎯
+
+ FAIL  src/test/fixes/fix-2.test.ts [ src/test/fixes/fix-2.test.ts ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/fixes/fix-2.test.ts:8:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/50]⎯
+
+ FAIL  src/test/fixes/fix-3.test.ts [ src/test/fixes/fix-3.test.ts ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/fixes/fix-3.test.ts:8:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/50]⎯
+
+ FAIL  src/test/fixes/fix-4.test.ts [ src/test/fixes/fix-4.test.ts ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/fixes/fix-4.test.ts:8:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/50]⎯
+
+ FAIL  src/test/violations/violation-1.test.ts [ src/test/violations/violation-1.test.ts ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/violations/violation-1.test.ts:12:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/50]⎯
+
+ FAIL  src/test/violations/violation-3.test.ts [ src/test/violations/violation-3.test.ts ]
+Error: Vitest failed to find the current suite. One of the following is possible:
+- "vitest" is imported directly without running "vitest" command
+- "vitest" is imported inside "globalSetup" (to fix this, use "setupFiles" instead, because "globalSetup" runs in a different context)
+- "vitest" is imported inside Vite / Vitest config file
+- Otherwise, it might be a Vitest bug. Please report it to https://github.com/vitest-dev/vitest/issues
+
+ ❯ src/test/violations/violation-3.test.ts:9:1
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/50]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 29 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/AddInternForm.test.tsx > updates name when user types
+ FAIL  src/components/AddInternForm.test.tsx > updates score when user types
+ FAIL  src/components/AddInternForm.test.tsx > resets name input when Reset is clicked
+ FAIL  src/components/AddInternForm.test.tsx > calls onAdd with intern data
+ FAIL  src/components/AddInternForm.test.tsx > shows error when name is empty on submit
+ FAIL  src/components/AddInternForm.test.tsx > shows error when score is above 100
+ FAIL  src/components/AddInternForm.test.tsx > does not call onAdd when form is invalid
+ FAIL  src/components/AddInternForm.test.tsx > error clears when valid name is entered after failed submit
+ FAIL  src/components/InternListWithCallback.test.tsx > renders all interns from the mocked context
+ FAIL  src/components/InternListWithCallback.test.tsx > renders the correct number of Remove buttons
+ FAIL  src/components/InternRow.test.tsx > finds the Remove button by role
+ FAIL  src/components/InternRow.test.tsx > calls onRemove with the correct id when Remove is clicked
+ FAIL  src/components/InternRow.test.tsx > does not call onRemove when row is only rendered
+ FAIL  src/components/Navbar.test.tsx > renders the dashboard title
+ FAIL  src/components/Navbar.test.tsx > theme toggle button is visible
+ FAIL  src/components/Navbar.test.tsx > theme toggle button label changes after click
+ FAIL  src/components/QueryDemo.test.tsx > getByText throws when element is missing
+ FAIL  src/components/QueryDemo.test.tsx > queryBy returns null when element is missing
+ FAIL  src/components/QueryDemo.test.tsx > getAllBy finds multiple elements
+ FAIL  src/components/ThemedCard.test.tsx > renders the intern name
+ FAIL  src/components/ThemedCard.test.tsx > renders the score
+ FAIL  src/components/ThemedCard.test.tsx > shows Pass when score is 50 or above
+ FAIL  src/components/ThemedCard.test.tsx > shows Fail when score is below 50
+ FAIL  src/components/ThemedCard.test.tsx > does not show Fail when the intern has passed
+ FAIL  src/components/ThemedCard.test.tsx > does not show Pass when the intern has failed
+ FAIL  src/components/ThemedCard.test.tsx > renders score of 0 correctly
+ FAIL  src/components/ThemedCard.test.tsx > renders score of 100 correctly
+ FAIL  src/components/ThemedCard.test.tsx > renders a different name and score without mixing up values
+ FAIL  src/components/ThemedCard.test.tsx > no console errors during ThemedCard render
+ReferenceError: useState is not defined
+ ❯ InternProvider src/contexts/intern-context.tsx:45:31
+ ❯ Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:20
+ ❯ renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:22
+ ❯ updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:19
+ ❯ beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:18
+ ❯ runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:22
+ ❯ workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:41
+ ❯ renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:11
+ ❯ performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/50]⎯
+
+
+ Test Files  27 failed | 2 passed (29)
+      Tests  29 failed | 13 passed (42)
+   Start at  12:44:14
+   Duration  53.08s (transform 1.90s, setup 26.48s, import 9.61s, tests 693ms, environment 242.53s)
+
