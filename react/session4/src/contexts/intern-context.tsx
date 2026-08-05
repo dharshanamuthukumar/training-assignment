@@ -8,9 +8,9 @@ import {
   createIntern,
   calculateAverageScore,
   filterInterns,
+  validateInternForm,
 } from "../services/intern-service";
 import type { Intern, InternFormState } from "../types/intern";
-
 interface InternContextType {
   interns: Intern[];
   filteredInterns: Intern[];
@@ -47,18 +47,21 @@ const INITIAL_INTERN_OBJECTS = INITIAL_INTERNS.map((form, index) =>
 );
 
 function validateIntern(intern: Intern): Intern {
-  if (!intern.name.trim()) {
-    throw new Error("validateIntern: name is required");
-  }
+  const error = validateInternForm(intern.name, intern.score);
 
-  if (intern.score < 0 || intern.score > 100) {
-    throw new Error(
-      `validateIntern: score must be between 0 and 100, got: ${intern.score}`,
-    );
+  if (error) {
+    throw new Error(`validateIntern: ${error}`);
   }
 
   return intern;
 }
+// Duplication removal reflection:
+// The validation logic for checking an intern's name and score existed in both
+// intern-validation.ts and intern-context.tsx.
+// Leaving duplicated validation increases the risk of inconsistent behavior if the
+// validation rules change in one place but not the other.
+// Reusing validateInternForm() creates a single source of truth and makes future
+// validation changes easier to maintain.
 
 export function InternProvider({
   children,

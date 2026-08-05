@@ -47,26 +47,39 @@ function useInternForm(
   const [form, setForm] = useState(initialForm);
 
   const [error, setError] = useState("");
+function getFieldValue(
+  target: HTMLInputElement | HTMLSelectElement,
+): string | number | boolean {
+  const { name, value, type } = target;
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) {
-    const { name, value, type } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]:
-        type === "checkbox"
-          ? (e.target as HTMLInputElement).checked
-          : name === "score"
-            ? value === ""
-              ? ""
-              : Number(value)
-            : value,
-    }));
-    setError("");
+  if (type === "checkbox") {
+    return target.checked;
   }
 
+  if (name === "score") {
+    return value === "" ? "" : Number(value);
+  }
+
+  return value;
+}
+ function handleChange(
+   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+ ) {
+   const { name } = e.target;
+
+   setForm((prev) => ({
+     ...prev,
+     [name]: getFieldValue(e.target),
+   }));
+
+   setError("");
+ }
+ // Extract Function Reflection:
+// Originally, handleChange() both converted form input values (checkboxes, numbers, and text)
+// and updated the form state.
+// After refactoring, getFieldValue() is responsible only for converting the input value,
+// while handleChange() focuses on updating state and clearing validation errors.
+// This separation makes the code easier to read, test, and maintain.
   function handleReset() {
     setForm(initialForm);
     setError("");

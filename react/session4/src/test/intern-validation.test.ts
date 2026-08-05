@@ -31,9 +31,8 @@ describe("validateInternForm", () => {
   });
 });
 
-// Task 3.3
-// Observation:
-// Each test needed only one line of Arrange because validateInternForm is a
-// pure function. Compared to testing through renderHook(), there is no need
-// to render the hook, update state, wrap providers, or use act(), making the
-// tests much shorter, simpler, and easier to maintain.
+// Reflection:
+// Each test required 0–1 lines of Arrange because validateInternForm is a pure function and can be called directly.
+// Testing the validation function is much simpler than testing it through useInternForm with renderHook,
+// because there is no React hook setup, component rendering, state management, or context required.
+// The tests focus only on the validation logic, making them shorter, faster, and easier to understand.

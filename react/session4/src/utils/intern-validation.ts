@@ -2,6 +2,7 @@
 // Smell 1: Magic numbers — score limits (0 and 100) are hardcoded instead of using named constants.
 // Smell 2: Primitive obsession — validation accepts primitive values (name and score) rather than an Intern or InternForm object.
 // Smell 3: Mixed validation concerns — function performs both runtime assertions and business validation in the same method.
+
 import { assert } from "./assert";
 const MIN_SCORE = 0;
 const MAX_SCORE = 100;
