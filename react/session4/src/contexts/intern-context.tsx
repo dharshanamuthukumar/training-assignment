@@ -1,3 +1,7 @@
+// Code smell audit
+// Smell 1: Mixed responsibilities — InternProvider manages React state while also performing business operations such as creating and validating interns.
+// Smell 2: Duplicate validation logic — validateIntern() repeats validation that should ideally exist in a single validation/service layer.
+// Smell 3: Hardcoded seed data — INITIAL_INTERNS contains embedded sample data instead of loading it from a dedicated data source or configuration.
 import { createContext, ReactNode, useContext, useState } from "react";
 import { useInternRepository } from "../repositories/intern-repository";
 import {
@@ -42,10 +46,6 @@ const INITIAL_INTERN_OBJECTS = INITIAL_INTERNS.map((form, index) =>
   createIntern(form, () => index + 1),
 );
 
-// -----------------------------------------------------------------------------
-// Task 6.1 — Boundary validation
-// Validate all incoming intern data before it is stored in the repository.
-// -----------------------------------------------------------------------------
 function validateIntern(intern: Intern): Intern {
   if (!intern.name.trim()) {
     throw new Error("validateIntern: name is required");
@@ -97,37 +97,5 @@ export function InternProvider({
     <InternContext.Provider value={value}>{children}</InternContext.Provider>
   );
 }
-
-// -----------------------------------------------------------------------------
-// Task 4.1 — Separation of Concerns
-// After refactoring, InternProvider only wires the service and repository
-// layers together into a context value.
-// -----------------------------------------------------------------------------
-
-// Task 4.1
-// Intern IDs can now be changed without modifying this file.
-// Only createIntern() in intern-service.ts needs to be updated.
-
-// Task 6.2
-// One-sentence description:
-// "intern-context.tsx wires the service and repository layers together
-// into a context value."
-
-// -----------------------------------------------------------------------------
-// Silent Failure Audit
-// No silent failure patterns found.
-// Invalid data is rejected before reaching the repository.
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
-// Task 6.1
-// The InternProvider acts as the application's boundary for incoming
-// intern data. Every intern is validated before being stored.
-//
-// Without this validation, malformed intern objects could enter the
-// repository, leading to incorrect calculations, rendering problems,
-// or inconsistent application state.
-//
-// With boundary validation, invalid data is rejected immediately with
-// a descriptive error message, ensuring that only valid data is stored.
-// -----------------------------------------------------------------------------
+// Refactoring priority:
+// I would remove the duplicate validation logic first because having validation rules in multiple places can lead to inconsistent behavior if one copy is updated and the other is forgotten.

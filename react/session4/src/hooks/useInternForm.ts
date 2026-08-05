@@ -1,10 +1,8 @@
-// Silent failure audit — useInternForm.ts
-// Pattern 1: No silent failures found.
-// - Validation is delegated to validateInternForm().
-// - submit() returns a boolean to indicate success or failure.
-// - No try/catch blocks that swallow errors.
-// - No null/undefined/-1 error returns.
-// - No default values hiding missing required data.
+
+// Code smell audit
+// Smell 1: Complex conditional — handleChange() contains nested ternary operators that reduce readability.
+// Smell 2: Multiple responsibilities — submit() performs validation, creates the intern object, updates context, and resets form state.
+// Smell 3: Repeated initialization — initialForm is used in multiple places for resetting state, suggesting reset logic could be centralized.
 import { useState } from "react";
 import { validateInternForm } from "../services/intern-service";
 export interface Intern {
@@ -109,28 +107,6 @@ function useInternForm(
 
 export default useInternForm;
 
-// Task 6.1
-// Validation has been extracted into a pure function.
-// addIntern is injected instead of coming from context.
-// generateId is injected with a default implementation.
-// This makes the hook easier to test because external
-// dependencies can be replaced with mocks.
-
-// seperation of concern
-// Job: "This hook manages the state and submission logic for the intern form."
-// Concerns mixed : None
-
-// useInternForm.ts does not belong purely to the service layer or UI layer.
-// It acts as a coordination layer (custom hook layer) between UI components,
-// services, and context. It manages form state, calls service functions like
-// validation, and triggers context actions like addIntern.
-// This layer can be called the "hook layer" or "application coordination layer".
-
-// useInternForm.ts does not belong purely to the service layer or UI layer.
-// It acts as a coordination layer (custom hook layer) between UI components,
-// services, and context.
-
-// Silent failure audit conclusion:
-// No silent failure patterns were found.
-// Validation failures are reported through an error message and submit()
-// explicitly returns false, making failures visible to the caller.
+// Refactoring priority:
+// I would fix the complex conditional in handleChange() first because nested ternary operators are difficult to read and maintain.
+// Extracting the value conversion into a helper function would make the code easier for new developers to understand.

@@ -1,7 +1,13 @@
+// Code smell audit 
+// Smell 1: Magic numbers — score limits (0 and 100) are hardcoded instead of using named constants.
+// Smell 2: Primitive obsession — validation accepts primitive values (name and score) rather than an Intern or InternForm object.
+// Smell 3: Mixed validation concerns — function performs both runtime assertions and business validation in the same method.
 import { assert } from "./assert";
-
+const MIN_SCORE = 0;
+const MAX_SCORE = 100;
 export function validateInternForm(name: string, score: number): string | null {
   // Precondition assertions
+
   assert(
     typeof name === "string",
     `validateInternForm: name must be a string, got: ${typeof name}`,
@@ -17,33 +23,12 @@ export function validateInternForm(name: string, score: number): string | null {
     return "Name is required";
   }
 
-  if (score < 0 || score > 100) {
-    return "Score must be 0–100";
-  }
-
+  if (score < MIN_SCORE || score > MAX_SCORE) {
+return `Score must be ${MIN_SCORE}–${MAX_SCORE}`;  }
+  // Constant extraction audit:
+  // Extracted magic numbers: 0 and 100 → MIN_SCORE and MAX_SCORE
+  // Reason: These values define the valid score range for interns. Naming them makes the business rule explicit and ensures the valid score range can be changed in one place instead of searching for hardcoded values throughout the code.
   return null;
 }
-// Task 3.1
-// Before the refactor, the function performed processing before validating
-// the inputs, which could result in unnecessary work if the validation failed.
-//
-// After the refactor, all validation checks are placed at the top of the
-// function as guard clauses. This ensures the function performs no work
-// when the input is invalid.
-//
-// The first thing that runs on every call is the input validation,
-// allowing the function to fail fast and making errors easier to detect
-// and debug.
-
-// Task 5.2
-// The assert checks verify the function's preconditions. They ensure the
-// caller has provided arguments of the correct type and immediately throw
-// an error if the function is used incorrectly.
-//
-// The validation logic below checks whether the input values satisfy the
-// application's business rules, such as requiring a non-empty name and a
-// score between 0 and 100. These checks return validation messages so the
-// user can correct their input.
-//
-// Assertions throw unconditionally when a programming error occurs,
-// whereas the validation logic reports expected user input errors.
+// Refactoring priority:
+// I would replace the magic numbers with named constants first because it improves readability and makes future changes (such as changing the score range) much easier and less error-prone.
