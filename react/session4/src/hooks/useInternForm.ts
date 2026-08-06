@@ -1,74 +1,125 @@
-import { useState } from "react";
 
-interface InternFormState {
+// Code smell audit
+// Smell 1: Complex conditional — handleChange() contains nested ternary operators that reduce readability.
+// Smell 2: Multiple responsibilities — submit() performs validation, creates the intern object, updates context, and resets form state.
+// Smell 3: Repeated initialization — initialForm is used in multiple places for resetting state, suggesting reset logic could be centralized.
+import { useState } from "react";
+import { validateInternForm } from "../services/intern-service";
+export interface Intern {
+  id: number;
   name: string;
   score: number;
-  isPresent: boolean;
   role: string;
+  isPresent: boolean;
+}
+
+export interface InternFormState {
+  name: string;
+  score: number | "";
+  role: string;
+  isPresent: boolean;
 }
 
 interface UseInternFormReturn {
   form: InternFormState;
   error: string;
+
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => void;
+
   handleReset: () => void;
-  isValid: () => boolean;
+
+  submit: () => boolean;
 }
 
 const initialForm: InternFormState = {
   name: "",
-  score: 0,
-  isPresent: true,
+  score: "",
   role: "Frontend",
+  isPresent: true,
 };
 
-function useInternForm(): UseInternFormReturn {
-  const [form, setForm] = useState<InternFormState>(initialForm);
-  const [error, setError] = useState<string>("");
+function useInternForm(
+  addIntern: (intern: Intern) => void,
+  generateId: () => number = Date.now,
+): UseInternFormReturn {
+  const [form, setForm] = useState(initialForm);
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ): void {
-    const { name, value, type } = e.target;
+  const [error, setError] = useState("");
+function getFieldValue(
+  target: HTMLInputElement | HTMLSelectElement,
+): string | number | boolean {
+  const { name, value, type } = target;
 
-    setForm((prev) => ({
-      ...prev,
-      [name]:
-        type === "checkbox"
-          ? (e.target as HTMLInputElement).checked
-          : name === "score"
-            ? Number(value)
-            : value,
-    }));
+  if (type === "checkbox") {
+    return target.checked;
   }
 
-  function handleReset(): void {
+  if (name === "score") {
+    return value === "" ? "" : Number(value);
+  }
+
+  return value;
+}
+ function handleChange(
+   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+ ) {
+   const { name } = e.target;
+
+   setForm((prev) => ({
+     ...prev,
+     [name]: getFieldValue(e.target),
+   }));
+
+   setError("");
+ }
+ // Extract Function Reflection:
+// Originally, handleChange() both converted form input values (checkboxes, numbers, and text)
+// and updated the form state.
+// After refactoring, getFieldValue() is responsible only for converting the input value,
+// while handleChange() focuses on updating state and clearing validation errors.
+// This separation makes the code easier to read, test, and maintain.
+  function handleReset() {
     setForm(initialForm);
     setError("");
   }
 
-  function isValid(): boolean {
-    if (!form.name.trim()) {
-      setError("Name is required");
+  function submit() {
+    const numericScore = form.score === "" ? 0 : Number(form.score);
+    const validationError = validateInternForm(form.name, numericScore);
+
+    if (validationError) {
+      setError(validationError);
       return false;
     }
 
-    if (form.score < 0 || form.score > 100) {
-      setError("Score must be 0–100");
-      return false;
-    }
+    addIntern({
+      id: generateId(),
+      name: form.name,
+      score: numericScore,
+      role: form.role,
+      isPresent: form.isPresent,
+    });
 
     setError("");
+
+    setForm(initialForm);
+
     return true;
   }
 
-  return { form, error, handleChange, handleReset, isValid };
+  return {
+    form,
+    error,
+    handleChange,
+    handleReset,
+    submit,
+  };
 }
 
 export default useInternForm;
-// The UseInternFormReturn interface defines exactly what the custom hook
-// returns. It improves type safety, provides better editor auto-completion,
-// makes the hook easier to understand, and ensures any component using
-// the hook receives the expected properties and functions.
+
+// Refactoring priority:
+// I would fix the complex conditional in handleChange() first because nested ternary operators are difficult to read and maintain.
+// Extracting the value conversion into a helper function would make the code easier for new developers to understand.
