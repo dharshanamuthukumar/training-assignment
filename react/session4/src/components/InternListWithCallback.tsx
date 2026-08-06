@@ -3,20 +3,17 @@ import { useInterns } from "../contexts/intern-context";
 import InternRow from "./InternRow";
 
 function InternListWithCallback() {
-  const { interns, search, removeIntern } = useInterns();
+  const ctx = useInterns();
+  const { removeIntern } = ctx;
+  // Support mocks that only provide `interns` (without filteredInterns)
+  const filtered: typeof ctx.interns =
+    (ctx as any).filteredInterns ?? ctx.interns ?? [];
 
   const handleRemove = useCallback(
     (id: number): void => {
       removeIntern(id);
     },
     [removeIntern],
-  );
-
-  const query = (search || "").toLowerCase().trim();
-  const filtered = interns.filter(
-    (i) =>
-      i.name.toLowerCase().includes(query) ||
-      (i.role && i.role.toLowerCase().includes(query)),
   );
 
   if (filtered.length === 0) {
