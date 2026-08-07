@@ -1,54 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1784372635092" clover="3.2.0">
-  <project timestamp="1784372635092" name="All files">
-    <metrics statements="91" coveredstatements="83" conditionals="53" coveredconditionals="42" methods="45" coveredmethods="37" elements="189" coveredelements="162" complexity="0" loc="91" ncloc="91" packages="4" files="11" classes="11"/>
+<coverage generated="1785923824019" clover="3.2.0">
+  <project timestamp="1785923824019" name="All files">
+    <metrics statements="169" coveredstatements="157" conditionals="118" coveredconditionals="98" methods="73" coveredmethods="68" elements="360" coveredelements="323" complexity="0" loc="169" ncloc="169" packages="7" files="21" classes="21"/>
     <package name="components">
-      <metrics statements="47" coveredstatements="45" conditionals="32" coveredconditionals="26" methods="19" coveredmethods="17"/>
+      <metrics statements="48" coveredstatements="40" conditionals="47" coveredconditionals="36" methods="20" coveredmethods="16"/>
       <file name="AddInternForm.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\AddInternForm.tsx">
-        <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
-        <line num="9" count="49" type="stmt"/>
-        <line num="10" count="49" type="stmt"/>
-        <line num="11" count="49" type="stmt"/>
-        <line num="14" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="19" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="42" count="25" type="stmt"/>
-        <line num="44" count="25" type="cond" truecount="1" falsecount="1"/>
-        <line num="45" count="25" type="stmt"/>
-        <line num="50" count="10" type="stmt"/>
-        <line num="53" count="49" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="9" count="47" type="stmt"/>
+        <line num="11" count="47" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="47" type="stmt"/>
+        <line num="16" count="47" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="23" count="47" type="stmt"/>
       </file>
       <file name="InternListWithCallback.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\InternListWithCallback.tsx">
-        <metrics statements="9" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="3"/>
-        <line num="13" count="6" type="stmt"/>
-        <line num="15" count="6" type="stmt"/>
-        <line num="17" count="6" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="45" count="2" type="stmt"/>
-        <line num="48" count="6" type="stmt"/>
+        <metrics statements="9" coveredstatements="7" conditionals="5" coveredconditionals="3" methods="3" coveredmethods="2"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="1"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
       </file>
       <file name="InternRow.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\InternRow.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <metrics statements="6" coveredstatements="6" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="21" count="9" type="stmt"/>
+        <line num="22" count="9" type="stmt"/>
+        <line num="23" count="9" type="stmt"/>
+        <line num="24" count="9" type="stmt"/>
+        <line num="29" count="9" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
       </file>
       <file name="Navbar.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\Navbar.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
         <line num="4" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
+      </file>
+      <file name="ScoreBadge.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\ScoreBadge.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <line num="4" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
       </file>
       <file name="ScoreStats.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\ScoreStats.tsx">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
@@ -64,6 +61,16 @@
         <line num="30" count="4" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
       </file>
+      <file name="SummaryBar.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\SummaryBar.tsx">
+        <metrics statements="7" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+      </file>
       <file name="ThemedCard.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\components\ThemedCard.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="10" coveredconditionals="7" methods="1" coveredmethods="1"/>
         <line num="9" count="14" type="stmt"/>
@@ -71,37 +78,50 @@
       </file>
     </package>
     <package name="contexts">
-      <metrics statements="21" coveredstatements="15" conditionals="6" coveredconditionals="2" methods="13" coveredmethods="7"/>
+      <metrics statements="34" coveredstatements="31" conditionals="10" coveredconditionals="6" methods="12" coveredmethods="11"/>
       <file name="intern-context.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\contexts\intern-context.tsx">
-        <metrics statements="14" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="3"/>
-        <line num="24" count="8" type="stmt"/>
-        <line num="27" count="36" type="stmt"/>
-        <line num="28" count="36" type="stmt"/>
-        <line num="30" count="36" type="stmt"/>
-        <line num="31" count="35" type="stmt"/>
-        <line num="32" count="7" type="stmt"/>
-        <line num="39" count="7" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="51" count="36" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
+        <metrics statements="21" coveredstatements="18" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="6"/>
+        <line num="24" count="11" type="stmt"/>
+        <line num="29" count="49" type="stmt"/>
+        <line num="31" count="49" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="49" type="stmt"/>
+        <line num="38" count="11" type="stmt"/>
+        <line num="45" count="11" type="stmt"/>
+        <line num="46" count="44" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="52" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="73" count="41" type="stmt"/>
+        <line num="74" count="41" type="stmt"/>
+        <line num="76" count="41" type="stmt"/>
+        <line num="78" count="41" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="99" count="41" type="stmt"/>
       </file>
       <file name="theme-context.tsx" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\contexts\theme-context.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="5"/>
         <line num="13" count="8" type="stmt"/>
         <line num="16" count="37" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="22" count="37" type="stmt"/>
-        <line num="30" count="25" type="stmt"/>
-        <line num="35" count="25" type="cond" truecount="1" falsecount="1"/>
-        <line num="37" count="25" type="stmt"/>
+        <line num="18" count="37" type="stmt"/>
+        <line num="19" count="37" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="36" type="stmt"/>
+        <line num="24" count="36" type="stmt"/>
+        <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="37" type="stmt"/>
+        <line num="40" count="28" type="stmt"/>
+        <line num="45" count="28" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="28" type="stmt"/>
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="21" coveredstatements="21" conditionals="15" coveredconditionals="14" methods="11" coveredmethods="11"/>
+      <metrics statements="37" coveredstatements="36" conditionals="19" coveredconditionals="16" methods="17" coveredmethods="17"/>
       <file name="useCounter.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\hooks\useCounter.ts">
         <metrics statements="5" coveredstatements="5" conditionals="5" coveredconditionals="5" methods="6" coveredmethods="6"/>
         <line num="23" count="8" type="stmt"/>
@@ -111,23 +131,87 @@
         <line num="37" count="8" type="stmt"/>
       </file>
       <file name="useInternForm.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\hooks\useInternForm.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="28" count="23" type="stmt"/>
-        <line num="29" count="23" type="stmt"/>
-        <line num="34" count="10" type="stmt"/>
-        <line num="36" count="10" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="53" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="58" count="5" type="cond" truecount="4" falsecount="0"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
-        <line num="63" count="3" type="stmt"/>
-        <line num="64" count="3" type="stmt"/>
-        <line num="67" count="23" type="stmt"/>
+        <metrics statements="24" coveredstatements="23" conditionals="11" coveredconditionals="9" methods="6" coveredmethods="6"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="47" count="68" type="stmt"/>
+        <line num="49" count="68" type="stmt"/>
+        <line num="53" count="42" type="stmt"/>
+        <line num="55" count="42" type="cond" truecount="1" falsecount="1"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="59" count="42" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="63" count="30" type="stmt"/>
+        <line num="68" count="42" type="stmt"/>
+        <line num="70" count="42" type="stmt"/>
+        <line num="75" count="42" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="89" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="90" count="14" type="stmt"/>
+        <line num="92" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="93" count="9" type="stmt"/>
+        <line num="94" count="9" type="stmt"/>
+        <line num="97" count="5" type="stmt"/>
+        <line num="105" count="5" type="stmt"/>
+        <line num="107" count="5" type="stmt"/>
+        <line num="109" count="5" type="stmt"/>
+        <line num="112" count="68" type="stmt"/>
+      </file>
+      <file name="useInternSearch.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\hooks\useInternSearch.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="repositories">
+      <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="9" coveredmethods="9"/>
+      <file name="intern-repository.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\repositories\intern-repository.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="9" coveredmethods="9"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="12" count="55" type="stmt"/>
+        <line num="14" count="55" type="stmt"/>
+        <line num="16" count="55" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="19" count="55" type="stmt"/>
+        <line num="20" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="55" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="25" coveredstatements="25" conditionals="27" coveredconditionals="25" methods="7" coveredmethods="7"/>
+      <file name="intern-service.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\services\intern-service.ts">
+        <metrics statements="25" coveredstatements="25" conditionals="27" coveredconditionals="25" methods="7" coveredmethods="7"/>
+        <line num="9" count="48" type="stmt"/>
+        <line num="25" count="18" type="cond" truecount="4" falsecount="0"/>
+        <line num="26" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="29" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="15" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="18" type="stmt"/>
+        <line num="39" count="18" type="stmt"/>
+        <line num="45" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="8" type="stmt"/>
+        <line num="49" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="53" count="7" type="stmt"/>
+        <line num="58" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="62" count="170" type="stmt"/>
+        <line num="64" count="43" type="stmt"/>
+        <line num="69" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="45" type="cond" truecount="2" falsecount="0"/>
+        <line num="75" count="42" type="stmt"/>
+        <line num="78" count="3" type="stmt"/>
+        <line num="80" count="3" type="stmt"/>
+        <line num="82" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="87" count="3" type="stmt"/>
+        <line num="92" count="3" type="stmt"/>
       </file>
     </package>
     <package name="test">
@@ -136,6 +220,39 @@
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="7" count="35" type="stmt"/>
         <line num="15" count="35" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="15" coveredstatements="15" conditionals="12" coveredconditionals="12" methods="6" coveredmethods="6"/>
+      <file name="assert.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\utils\assert.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="61" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="generate-id.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\utils\generate-id.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+      <file name="intern-request.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\utils\intern-request.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="intern-utils.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\utils\intern-utils.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="13" count="18" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="intern-validation.ts" path="C:\Users\dhars\OneDrive\Desktop\training assessment\react\session4\src\utils\intern-validation.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="23" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="27" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
       </file>
     </package>
   </project>
