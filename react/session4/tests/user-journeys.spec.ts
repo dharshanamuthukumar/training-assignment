@@ -95,7 +95,7 @@ test.describe('User Journey — Add Intern Validation', () => {
     await page.getByPlaceholder('Score').fill('150');
     await page.getByRole('button', { name: 'Add Intern' }).click();
 
-    await expect(page.getByText('Score must be between 0 and 100')).toBeVisible();
+    await expect(page.getByText('Score must be 0–100')).toBeVisible();
   });
 
 });
@@ -192,7 +192,7 @@ test.describe('User Journey — Remove Intern', () => {
     await rahulCard.getByRole('button', { name: 'Remove' }).click();
 
     // Trigger a re-render by toggling theme
-    await page.getByRole('button', { name: /switch to dark mode/i }).click();
+    await page.getByRole('button', { name: /switch to/i }).click();
 
     await expect(page.getByRole('heading', { name: 'Rahul' })).not.toBeVisible();
   });

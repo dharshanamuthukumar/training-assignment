@@ -74,7 +74,7 @@ export default defineConfig({
 
   // Starts the Vite dev server automatically before tests run.
   webServer: {
-    command: "npm run dev",
+    command: "cmd /c npm run dev",
     url: "http://localhost:5173",
     reuseExistingServer: !process.env.CI,
   },
